@@ -1,23 +1,21 @@
-const Usuario = require('../models/usuario');
+const ItensPedido = require('../models/itensPedido');
 const status = require('http-status');
 
 exports.Insert = (req, res, next) =>{
-    const nome = req.body.nome;
-    const cpf = req.body.cpf;
-    const email = req.body.email;
-    const senha = req.body.senha;
-    const ativo = req.body.ativo;
+    const idPedido = req.body.idPedido;
+    const idProduto = req.body.idProduto;
+    const valorUnit = req.body.valorUnit;
+    const quantidade = req.body.quantidade;
 
-    Usuario.create({
-        nome: nome,
-        cpf: cpf,
-        email: email,
-        senha: senha,
-        ativo: ativo,
+    ItensPedido.create({
+        idPedido: idPedido,
+        idProduto: idProduto,
+        valorUnit: valorUnit,
+        quantidade: quantidade,       
     })
-    .then(usuario => {
-        if(usuario){
-            res.status(status.OK).send(usuario);
+    .then(itensPedido => {
+        if(itensPedido){
+            res.status(status.OK).send(itensPedido);
         } else{
             res.status(status.NOT_FOUND).send();
         }
@@ -26,10 +24,10 @@ exports.Insert = (req, res, next) =>{
 };
 
 exports.SelectAll = (req, res, next) => {
-    Usuario.findAll()
-        .then(usuario => {
-            if(usuario){
-                res.status(status.OK).send(usuario);
+    ItensPedido.findAll()
+        .then(itensPedido => {
+            if(itensPedido){
+                res.status(status.OK).send(itensPedido);
             }
         })
     .catch(error => next(error));
@@ -38,10 +36,10 @@ exports.SelectAll = (req, res, next) => {
 exports.SelectDetail = (req, res, next) => {
     const id = req.params.id;
 
-    Usuario.findByPk(id)
-        .then(usuario =>{
-            if(usuario){
-                res.status(status.OK).send(usuario);
+    ItensPedido.findByPk(id)
+        .then(itensPedido =>{
+            if(itensPedido){
+                res.status(status.OK).send(itensPedido);
             } else {
                 res.status(status.NOT_FOUND).send();
             }
@@ -51,21 +49,19 @@ exports.SelectDetail = (req, res, next) => {
 
 exports.Update = (req, res, next) => {
     const id = req.params.id;
-    const nome = req.body.nome;
-    const cpf = req.body.cpf;
-    const email = req.body.email;
-    const senha = req.body.senha;
-    const ativo = req.body.ativo;
+    const idPedido = req.body.idPedido;
+    const idProduto = req.body.idProduto;
+    const valorUnit = req.body.valorUnit;
+    const quantidade = req.body.quantidade;
 
-    Usuario.findByPk(id)
-        .then(usuario => {
-            if (usuario) {
-                usuario.update({
-                    nome: nome,
-                    cpf: cpf,
-                    email: email,
-                    senha: senha,
-                    ativo: ativo,
+    ItensPedido.findByPk(id)
+        .then(itensPedido => {
+            if (itensPedido) {
+                itensPedido.update({
+                    idPedido: idPedido,
+                    idProduto: idProduto,
+                    valorUnit: valorUnit,
+                    quantidade: quantidade, 
                 },
                     {
                         where: { id: id }
@@ -84,10 +80,10 @@ exports.Update = (req, res, next) => {
 exports.Delete = (req, res, next) => {
     const id = req.params.id;
 
-    Usuario.findByPk(id)
-        .then(usuario => {
-            if (usuario) {
-                usuario.destroy({
+    ItensPedido.findByPk(id)
+        .then(itensPedido => {
+            if (itensPedido) {
+                itensPedido.destroy({
                     where: { id: id }
                 })
                     .then(() => {
