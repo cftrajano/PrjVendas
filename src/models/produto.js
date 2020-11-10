@@ -17,11 +17,11 @@ const Produto = sequelize.define("produto", {
         allowNull: false,
         type: Sequelize.DECIMAL(10,3)
     },
-    unidadeMedida: {
+    precoCusto:{
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.DECIMAL(10,2)
     },
-    preco:{
+    precoVenda:{
         allowNull: false,
         type: Sequelize.DECIMAL(10,2)
     },

@@ -21,10 +21,6 @@ const Usuario = sequelize.define("usuario", {
         allowNull: false,
         type: Sequelize.STRING(100),
     },
-    senha:{
-        allowNull: false,
-        type: Sequelize.STRING(50),
-    },
     ativo: {
         allowNull: false,
         type: Sequelize.BOOLEAN(),

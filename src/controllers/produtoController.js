@@ -4,15 +4,15 @@ const status = require('http-status');
 exports.Insert = (req, res, next) =>{
     const descricao = req.body.descricao;
     const quantidade = req.body.quantidade;
-    const unidadeMedida = req.body.unidadeMedida;
-    const preco = req.body.preco;
+    const precoCusto = req.body.precoCusto;
+    const precoVenda = req.body.precoVenda;
     const ativo = req.body.ativo;
 
     Produto.create({
         descricao: descricao,
         quantidade: quantidade,
-        unidadeMedida: unidadeMedida,
-        preco: preco,
+        precoCusto: precoCusto,
+        precoVenda: precoVenda,
         ativo: ativo,        
     })
     .then(produto => {
@@ -53,8 +53,8 @@ exports.Update = (req, res, next) => {
     const id = req.params.id;
     const descricao = req.body.descricao;
     const quantidade = req.body.quantidade;
-    const unidadeMedida = req.body.unidadeMedida;
-    const preco = req.body.preco;
+    const precoCusto = req.body.precoCusto;
+    const precoVenda = req.body.precoVenda;
     const ativo = req.body.ativo;
 
     Produto.findByPk(id)
@@ -63,9 +63,9 @@ exports.Update = (req, res, next) => {
                 produto.update({
                     descricao: descricao,
                     quantidade: quantidade,
-                    unidadeMedida: unidadeMedida,
-                    preco: preco,
-                    ativo: ativo,
+                    precoCusto: precoCusto,
+                    precoVenda: precoVenda,
+                    ativo: ativo, 
                 },
                     {
                         where: { id: id }

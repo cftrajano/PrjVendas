@@ -5,24 +5,18 @@ exports.Insert = (req, res, next) =>{
     const nome = req.body.nome;
     const cpf = req.body.cpf;
     const telefone = req.body.telefone;
-    const celular = req.body.celular;
-    const logradouro = req.body.logradouro;
-    const bairro = req.body.bairro;
+    const endereco = req.body.endereco;
     const cidade = req.body.cidade;
     const estado = req.body.estado;
-    const cep = req.body.cep;
     const ativo = req.body.ativo;
 
     Cliente.create({
         nome: nome,
         cpf: cpf,
         telefone: telefone,
-        celular: celular,
-        logradouro: logradouro,
-        bairro: bairro,
+        endereco: endereco,
         cidade: cidade,
         estado: estado,
-        cep: cep,
         ativo: ativo,
     })
     .then(cliente => {
@@ -64,12 +58,9 @@ exports.Update = (req, res, next) => {
     const nome = req.body.nome;
     const cpf = req.body.cpf;
     const telefone = req.body.telefone;
-    const celular = req.body.celular;
-    const logradouro = req.body.logradouro;
-    const bairro = req.body.bairro;
+    const endereco = req.body.endereco;
     const cidade = req.body.cidade;
     const estado = req.body.estado;
-    const cep = req.body.cep;
     const ativo = req.body.ativo;
 
     Cliente.findByPk(id)
@@ -79,12 +70,9 @@ exports.Update = (req, res, next) => {
                     nome: nome,
                     cpf: cpf,
                     telefone: telefone,
-                    celular: celular,
-                    logradouro: logradouro,
-                    bairro: bairro,
+                    endereco: endereco,
                     cidade: cidade,
                     estado: estado,
-                    cep: cep,
                     ativo: ativo,
                 },
                     {

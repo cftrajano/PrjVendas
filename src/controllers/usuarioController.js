@@ -5,14 +5,12 @@ exports.Insert = (req, res, next) =>{
     const nome = req.body.nome;
     const cpf = req.body.cpf;
     const email = req.body.email;
-    const senha = req.body.senha;
     const ativo = req.body.ativo;
 
     Usuario.create({
         nome: nome,
         cpf: cpf,
         email: email,
-        senha: senha,
         ativo: ativo,
     })
     .then(usuario => {
@@ -54,7 +52,6 @@ exports.Update = (req, res, next) => {
     const nome = req.body.nome;
     const cpf = req.body.cpf;
     const email = req.body.email;
-    const senha = req.body.senha;
     const ativo = req.body.ativo;
 
     Usuario.findByPk(id)
@@ -64,7 +61,6 @@ exports.Update = (req, res, next) => {
                     nome: nome,
                     cpf: cpf,
                     email: email,
-                    senha: senha,
                     ativo: ativo,
                 },
                     {

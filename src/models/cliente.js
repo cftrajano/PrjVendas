@@ -19,19 +19,11 @@ const Cliente = sequelize.define("cliente", {
     },
     telefone:{
         allowNull: true,
-        type: Sequelize.STRING(13), 
-    },
-    Celular:{
-        allowNull: true,
         type: Sequelize.STRING(14), 
     },
-    logradouro: {
+    endereco: {
         allowNull: false,
         type: Sequelize.STRING(100),
-    },
-    bairro:{
-        allowNull: false,
-        type: Sequelize.STRING(50),
     },
     cidade: {
         allowNull: false,
@@ -40,10 +32,6 @@ const Cliente = sequelize.define("cliente", {
     estado: {
         allowNull: false,
         type: Sequelize.STRING(50),
-    },
-    cep: {
-        allowNull: false,
-        type: Sequelize.STRING(9),
     },
     ativo: {
         allowNull: false,
